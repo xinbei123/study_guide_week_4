@@ -1,0 +1,15 @@
+Test the server file
+
+Setup
+    >>> import server
+    >>> client = server.app.test_client()
+
+    >>> r = client.get('/')
+    >>> assert b"<h1>Welcome to the JavaScript Skills Assessment</h1>" in r.data
+
+    >>> r = client.get('/practice')
+    >>> assert b"<h1>JavaScript Practice</h1>" in r.data
+
+    >>> r = client.get('/puppies.json', query_string={'num-puppies': 2})
+    >>> assert b'"url":"http://pictures.4ever.eu/data/download/animals/dogs/husky-puppies,-two-puppies-147859.jpg"' in r.data
+
